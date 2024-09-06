@@ -32,7 +32,10 @@ Before you begin, ensure you have met the following requirements:
 2. **Install required Python packages**:
     Install the required packages using `pip`:
     ```bash
-    pip install -r requirements.txt
+    pip install opencv-python
+    pip install numpy
+    pip install matplotlib
+    pip install pytesseract
     ```
 
 3. **Install Tesseract-OCR**:
