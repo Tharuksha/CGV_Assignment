@@ -17,9 +17,15 @@ def extract_text(image):
     text = pytesseract.image_to_string(image)
     return text
 
+def preview_image(image, window_name="Preview"):
+    cv2.imshow(window_name, image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
 def main():
     corrected_path = get_image_path(os.path.join("corrected", "corrected_receipt.png"))
     corrected_image = cv2.imread(corrected_path, cv2.IMREAD_GRAYSCALE)
+    preview_image(corrected_image, "OCR Image Preview")  # Preview the image before OCR
     extracted_text = extract_text(corrected_image)
     save_text(extracted_text, "extracted_text", "receipt_text.txt")
 
