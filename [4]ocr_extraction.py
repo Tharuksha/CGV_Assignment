@@ -14,7 +14,9 @@ def save_text(text, subfolder, filename):
         text_file.write(text)
 
 def extract_text(image):
-    text = pytesseract.image_to_string(image)
+    
+    config = r'--oem 3 --psm 6'  
+    text = pytesseract.image_to_string(image, config=config)
     return text
 
 def preview_image(image, window_name="Preview"):
@@ -25,7 +27,7 @@ def preview_image(image, window_name="Preview"):
 def main():
     corrected_path = get_image_path(os.path.join("corrected", "corrected_receipt.png"))
     corrected_image = cv2.imread(corrected_path, cv2.IMREAD_GRAYSCALE)
-    preview_image(corrected_image, "OCR Image Preview")  # Preview the image before OCR
+    preview_image(corrected_image, "OCR Image Preview")
     extracted_text = extract_text(corrected_image)
     save_text(extracted_text, "extracted_text", "receipt_text.txt")
 
