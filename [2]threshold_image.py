@@ -16,3 +16,8 @@ def adaptive_binarize_image(image):
     binary_image = cv2.adaptiveThreshold(
         image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)
     return binary_image
+
+def preview_image(image, window_name="Preview"):
+    cv2.imshow(window_name, image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
