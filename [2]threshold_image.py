@@ -21,3 +21,13 @@ def preview_image(image, window_name="Preview"):
     cv2.imshow(window_name, image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+
+def main():
+    grayscale_path = get_image_path(os.path.join("grayscale", "grayscale_receipt.png"))
+    grayscale_image = cv2.imread(grayscale_path, cv2.IMREAD_GRAYSCALE)
+    binary_image = adaptive_binarize_image(grayscale_image)
+    preview_image(binary_image, "Adaptive Thresholding Preview")
+    save_image(binary_image, "binarized", "binary_receipt.png")
+
+if __name__ == "__main__":
+    main()
