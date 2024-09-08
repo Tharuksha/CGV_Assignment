@@ -51,6 +51,35 @@ def summarize_receipt(text):
             # Assumption: items have numbers in the line
             items.append(line)
 
+# Print the extracted and summarized information
+    print("\n--- Receipt Summary ---")
+    if cashier:
+        print(f"Cashier: {cashier}")
+    if bill_number:
+        print(f"Bill Number: {bill_number}")
+    if items:
+        print("Items:")
+        for item in items:
+            print(item)
+    if subtotal:
+        print(f"Subtotal: {subtotal}")
+    if cash:
+        print(f"Cash: {cash}")
+    if change:
+        print(f"Change: {change}")
+    print("\n----------------------")
+
+# Main function to run the program
+if __name__ == "__main__":
+    import sys
+
+    if len(sys.argv) != 2:
+        print("Usage: python summerize.py <image_path>")
+        sys.exit(1)
+
+    image_path = sys.argv[1]
+    receipt_text = process_image(image_path)
+    summarize_receipt(receipt_text)
 
 
 
