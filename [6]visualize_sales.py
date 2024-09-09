@@ -38,3 +38,10 @@ def visualize_sales(summary):
 
 # Rotate item labels to avoid overlap if there are many items
 plt.xticks(rotation=45, ha="right")
+
+# Save the plot
+script_dir = os.path.dirname(os.path.abspath(__file__))
+graph_folder = os.path.join(script_dir, "visualization")
+os.makedirs(graph_folder, exist_ok=True)
+plt.savefig(os.path.join(graph_folder, "sales_summary.png"))
+
