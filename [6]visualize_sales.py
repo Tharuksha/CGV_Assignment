@@ -35,3 +35,6 @@ def visualize_sales(summary):
     plt.ylabel('Prices (Currency)')
     plt.title('Sales Summary')
     plt.show()
+
+# Rotate item labels to avoid overlap if there are many items
+plt.xticks(rotation=45, ha="right")
