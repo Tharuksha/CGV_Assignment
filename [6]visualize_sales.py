@@ -71,3 +71,9 @@ if __name__ == "__main__":
 except (SyntaxError, ValueError) as e:
     raise ValueError("Failed to parse the summary file. Ensure it's in valid dictionary format.") from e
 
+plt.figure(figsize=(12, 8))
+plt.bar(items, prices, color='blue', width=0.6)
+plt.grid(True)
+plt.title('Sales Summary', fontsize=16)
+plt.xlabel('Items', fontsize=14)
+plt.ylabel('Prices (Currency)', fontsize=14)
