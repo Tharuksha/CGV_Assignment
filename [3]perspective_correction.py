@@ -17,3 +17,8 @@ def correct_perspective(image):
     matrix = cv2.getPerspectiveTransform(pts1, pts2)
     corrected_image = cv2.warpPerspective(image, matrix, (320, 630))
     return corrected_image
+
+def preview_image(image, window_name="Preview"):
+    cv2.imshow(window_name, image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
