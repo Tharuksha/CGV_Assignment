@@ -45,3 +45,23 @@ graph_folder = os.path.join(script_dir, "visualization")
 os.makedirs(graph_folder, exist_ok=True)
 plt.savefig(os.path.join(graph_folder, "sales_summary.png"))
 
+import ast
+
+def main():
+    summary_path = get_file_path(os.path.join("summary", "receipt_summary.txt"))
+
+    if not os.path.exists(summary_path):
+        raise FileNotFoundError(f"The file {summary_path} does not exist. Please run the summarization script first.")
+    
+    # Read the summary data from the file
+    with open(summary_path, "r") as summary_file:
+        try:
+            summary = ast.literal_eval(summary_file.read())  # Safely evaluate the string as a Python dictionary
+        except (SyntaxError, ValueError) as e:
+            raise ValueError("Failed to parse the summary file. Ensure it's in valid dictionary format.") from e
+    
+    # Visualize sales based on the summary data
+    visualize_sales(summary)
+
+if __name__ == "__main__":
+    main()
