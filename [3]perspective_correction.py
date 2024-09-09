@@ -22,3 +22,13 @@ def preview_image(image, window_name="Preview"):
     cv2.imshow(window_name, image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+
+def main():
+    binary_path = get_image_path(os.path.join("binarized", "binary_receipt.png"))
+    binary_image = cv2.imread(binary_path, cv2.IMREAD_GRAYSCALE)
+    corrected_image = correct_perspective(binary_image)
+    preview_image(corrected_image, "Perspective Correction Preview")  # Preview the corrected image
+    save_image(corrected_image, "corrected", "corrected_receipt.png")
+
+if __name__ == "__main__":
+    main()    
