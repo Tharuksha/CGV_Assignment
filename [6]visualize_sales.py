@@ -65,3 +65,9 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+    try:
+    summary = ast.literal_eval(summary_file.read())  # Safely evaluate the string as a Python dictionary
+except (SyntaxError, ValueError) as e:
+    raise ValueError("Failed to parse the summary file. Ensure it's in valid dictionary format.") from e
+
